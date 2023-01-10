@@ -3,7 +3,7 @@ import requests  # This may need to be installed from pip
 import json
 import re
 
-token = '4F8VebLeYBASsqMRHl3eUQQuqRenkduTbGSYnSADqN8XF7G1ys'
+token = 'Readwise API Token'
 
 def fetch_from_export_api(updated_after=None):
     full_data = []
