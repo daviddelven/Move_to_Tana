@@ -1,0 +1,37 @@
+FILE NAME
+Rw_{{last_highlighted_date|date('Ymd-Hi')}}-{{author|replace(' ','_')}}-{{source}}
+
+PAGE METADATA
+%%tana%%
+- 🅢{{title|replace("/", " ") }} {{ "#🅢book" if category == "books"}}{{"#🅢webSource" if category == "articles"}}{{"#🅢tweet" if category == "tweets"}}{{"#🅢podcast" if category == "podcasts"}} #🅢referenceNote 
+  {% if document_tags %}- 🅢topic::{% for tag in document_tags %}
+     - {{tag}} #🅢topic {% endfor %} {% endif %}
+ {% if url %} - 🅢source-URL:: {{url}} #🅢link{% endif %}
+   - 🅢author:: {{author}} #🅢author
+   - 🅢full-title:: {{full_title}}
+   - 🅢category:: {{ "book" if category == "books"}}{{"webSource" if category == "articles"}}{{"tweet" if category == "tweets"}}{{"podcast" if category == "podcasts"}}
+   - 🅢highlight-Date:: {{last_highlighted_date|date('F jS, Y')}}
+   - 🅢highlight-Time:: {{last_highlighted_date|date('H:i')}}
+   - 🅢highlight-Source:: {{source}}
+{% if is_new_page %}
+   - Highlights
+{% elif has_new_highlights -%}
+   - New highlights added [[{{last_highlighted_date|date('F jS, Y')}}]] at {{time}}
+{% endif -%}
+
+HIGHLIGHT
+      - {{ highlight_text }}{% if highlight_location and highlight_location_url %} ([{{highlight_location}}]({{highlight_location_url}})){% elif highlight_location %} ({{highlight_location}}){% endif %} <a href="https://readwise.io/open/{{highlight_id}}">🅢hl-link</a> #🅢highlight
+         {% if highlight_tags %}- 🅢topic::{% for tag in highlight_tags %}
+           - {{tag}} #🅢topic {% endfor %}
+    {% endif %} 
+         {% if highlight_note %} - 🅢highlight-note:: {{ highlight_note }} #🅢fleetingNote         
+    {% endif %}
+
+ {% if document_tags %}- 🅢topic::{% for tag in document_tags %}
+     - {{tag}} #🅢topic {% endfor %} {% endif %}
+     
+     
+ SYNC NOTIFICATION
+ - {{date|date('Y-m-d')}} {{time}} — Synced {{num_highlights}} highlight{{num_highlights|pluralize}} from {{num_books}} document{{num_books|pluralize}}.
+{% for book in books %}    - {{ book.num_highlights_added}} highlights from {{ book.title }}
+{% endfor %}   
