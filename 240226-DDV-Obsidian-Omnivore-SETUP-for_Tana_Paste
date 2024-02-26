@@ -1,0 +1,23 @@
+%%tana%%
+- 🅢{{{title}}} #[[🅢referenceNote]] #[[🅢webSource]]
+   - 🅢source-URL:: [Read Original]({{{originalUrl}}}) #[[🅢link]]
+   - 🅢capturing-URL:: [Read on Omnivore]({{{omnivoreUrl}}}) #[[🅢link]]
+   - 🅢author:: {{{author}}} #[[🅢author]]
+   - 🅢highlight-Date:: {{#formatDate}}{{dateSaved}},DD{{/formatDate}}
+   - 🅢highlight-Time:: {{#formatDate}}{{dateSaved}},HH:mm{{/formatDate}}
+   - 🅢topic::
+{{#labels}} 
+     - {{name}} #[[🅢topic]] 
+{{/labels}} 
+   - 🅢source_note:: {{#note}} {{{note}}} #[[🅢fleetingNote]] {{/note}}
+{{#highlights.length}}
+   - Highlights {{#highlights}}
+     - {{{text}}} [🅢hl-link]({{{highlightUrl}}}) #[[🅢highlight]]
+{{#labels}}
+        - 🅢topic::
+          - {{name}} #[[🅢topic]]
+{{/labels}}
+{{#note}} 
+         - 🅢highlight_note:: {{{note}}} #[[🅢fleetingNote]] {{/note}}
+       {{/highlights}}
+{{/highlights.length}}
